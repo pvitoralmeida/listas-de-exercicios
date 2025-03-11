@@ -228,7 +228,7 @@ function somaArray(numeros) {
 console.log(somaArray([1, 2, 3, 4]));
 ```
 - Resolução:
-```
+```javascript
 function somaArray(numeros) {
     let soma = 0; // Declara a variável soma antes de utilizá-la
     for (let i = 0; i < numeros.length; i++) { // Itera a lista de acordo com o tamanho dela
