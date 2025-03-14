@@ -244,4 +244,41 @@ ______
 - Uma classe `Produto` com atributos `nome` e `preco`, e um método `calcularDesconto()` que aplica um desconto fixo de 10% no preço do produto.
 - Uma classe `Livro` que herda de `Produto` e modifica o método `calcularDesconto()`, aplicando um desconto de 20% no preço dos livros.
 
-Explique como funciona a herança nesse contexto e como você implementaria a modificação do método na classe `Livro`.
+- Resolução:
+```javascript
+class Produto {
+  constructor(nome, preco) {
+    this.nome = nome;
+    this.preco = preco;
+  }
+
+  calcularDesconto() {
+    let desconto = 10;
+    let novoPreco = this.preco - (this.preco * desconto) / 100;
+    console.log(`Após o desconto de ${desconto}%, o preço de ${this.nome} passa de R$${this.preco.toFixed(2)} para R$${novoPreco.toFixed(2)}`);
+    return novoPreco;
+  }
+}
+
+class Livro extends Produto {
+  constructor(nome, preco) {
+    super(nome, preco);
+  }
+
+  calcularDesconto() {
+    let desconto = 20;
+    let novoPreco = this.preco - (this.preco * desconto) / 100;
+    console.log(`Após o desconto de ${desconto}%, o preço de ${this.nome} passa de R$${this.preco.toFixed(2)} para R$${novoPreco.toFixed(2)}`);
+    return novoPreco;
+  }
+}
+
+const produto1 = new Produto("Produto Genérico", 100);
+produto1.preco = produto1.calcularDesconto();
+const livro1 = new Livro("Livro Genérico", 100);
+livro1.preco = livro1.calcularDesconto();
+```
+
+- Explique como funciona a herança nesse contexto e como você implementaria a modificação do método na classe `Livro`.
+
+- Resposta: Nesse contexto, a classe "Livro" herda a classe "Produto" de modo a poder acessar seus métodos e seus atributos, no caso do último, a função "super()" garante que os atributos da classe filha sejam os mesmo da classe mãe. Já sobre a modificação dos métodos, na classe filha o método "calcularDesconto()" é sobrescrito, ou seja, é criado um método homônimo, mas com alterações que atendem as necessidades específicas da classe, no caso, o desconto é mudado de 10% para 20%.
