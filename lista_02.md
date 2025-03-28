@@ -258,6 +258,23 @@ Pedidos entre R$50,00 e R$199,99 (inclusive) → "Frete com custo adicional!"
 Pedidos de R$200,00 ou mais → "Frete grátis!"
 ```
 Implemente um pseudocódigo que receba o valor total da compra e exiba a classificação correta do frete para o cliente.
+
+- Resolução:
+```javascript
+function calcularFrete(precoProduto) {
+  if(precoProduto < 50){
+    console.log("Frete indisponível!");
+  } else if(precoProduto >= 50 && precoProduto <= 199.99) {
+    console.log("Frete com custo adicional!")
+  } else {
+    console.log("Frete grátis!")
+  }
+}
+
+calcularFrete(25);
+calcularFrete(50);
+calcularFrete(200);
+```
 ______
 
 **8)** Considere a implementação da classe base Veiculo em um sistema de modelagem de veículos. Sua tarefa é implementar, utilizando pseudocódigo, as classes derivadas Carro e Moto, que herdam da classe Veiculo, adicionando atributos específicos e métodos para calcular o consumo de combustível de um carro e de uma moto, respectivamente.
@@ -275,6 +292,61 @@ Método CalcularConsumo():
 ```
 Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
 Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veiculo e possuam métodos específicos para calcular o consumo de combustível com base na quilometragem e eficiência do veículo.
+
+- Resolução:
+```javascript
+class Veiculo{
+  contructor(modelo, ano){
+    this.modelo = modelo;
+    this.ano = ano;
+  }
+
+  calcularConsumo(){
+    let eficiencia;
+    let quilometragem;
+    let consumo = eficiencia * quilometragem;
+    return consumo;
+  }
+}
+
+class Carro extends Veiculo{
+  contructor(modelo, ano, combustivel){
+    super(modelo, ano);
+    this.combustivel = combustivel;
+  }
+
+  calcularConsumo(){
+    let eficiencia;
+    let quilometragem;
+    if(this.combustivel === "Gasolina"){
+      let consumo = eficiencia * quilometragem * 2;
+      return consumo;
+    } else if(this.combustivel === "Álcool") {
+      let consumo = eficiencia * quilometragem / 2;
+      return consumo;
+    }
+  }
+}
+
+class Moto extends Veiculo{
+  contructor(modelo, ano, velocidadeMaxima){
+    super(modelo, ano);
+    this.velocidadeMaxima = velocidadeMaxima;
+  }
+
+  calcularConsumo(){
+    let eficiencia;
+    let quilometragem;
+    if(this.velocidadeMaxima <= 80){
+      let consumo = eficiencia * quilometragem / 2;
+      return consumo;
+    } else if(this.velocidadeMaxima > 80) {
+      let consumo = eficiencia * quilometragem * 2;
+      return consumo;
+    }
+  }
+}
+```
 ______
 
 **9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
