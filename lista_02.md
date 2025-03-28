@@ -416,3 +416,51 @@ Escrever("Total de investimentos acumulados:")
 ImprimirMatriz(totalInvestimentos)  
 ```
 Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), que multiplica as duas matrizes, simulando o efeito de diferentes fatores de crescimento e impacto financeiro nos investimentos ao longo do tempo.
+
+- Resolução:
+```javascript
+function multiplicarMatrizesInvestimento(matrizA, matrizB) {
+  // Associa o tamanho das linhas e colunas das matrizes à variáveis
+  let linhasA = matrizA.length;
+  let colunasA = matrizA[0].length;
+  let linhasB = matrizB.length;
+  let colunasB = matrizB[0].length;
+
+  // Cria uma matriz com tamanho adequado para receber o resultado
+  let matrizResultado = new Array(linhasA);
+  for (let i = 0; i < linhasA; i++) {
+    matrizResultado[i] = new Array(colunasB).fill(0);
+  }
+
+  // Verifica se a multiplicação é possível
+  if (colunasA != linhasB) {
+    console.log("A multiplicação não é possível.");
+  } else {
+    // Realiza a multiplicação
+    for (let i = 0; i < linhasA; i++) {
+      for (let j = 0; j < colunasB; j++) {
+        for (let k = 0; k < colunasA; k++) {
+          matrizResultado[i][j] += matrizA[i][k] * matrizB[k][j];
+        }
+      }
+    }
+  }
+  return matrizResultado;
+}
+
+// Exemplo de uso da função
+investimentosAno1 = [
+  [1000, 2000],
+  [1500, 2500],
+];
+investimentosAno2 = [
+  [1200, 1800],
+  [1300, 2700],
+];
+
+impactoInvestimentos = multiplicarMatrizesInvestimento(investimentosAno2, investimentosAno1);
+for (let i = 0; i < impactoInvestimentos.length; i++) {
+  console.log(impactoInvestimentos[i]);
+}
+
+```
