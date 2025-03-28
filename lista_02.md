@@ -435,6 +435,7 @@ function multiplicarMatrizesInvestimento(matrizA, matrizB) {
   // Verifica se a multiplicação é possível
   if (colunasA != linhasB) {
     console.log("A multiplicação não é possível.");
+    return;
   } else {
     // Realiza a multiplicação
     for (let i = 0; i < linhasA; i++) {
